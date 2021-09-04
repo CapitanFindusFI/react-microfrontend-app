@@ -1,6 +1,11 @@
 import React from 'react';
+import {History} from 'history';
 
-const App: React.FC = () => {
+type PropsType = {
+    history: History;
+};
+
+const App: React.FC<PropsType> = (props: PropsType) => {
     return <h1>Boilerplate running!</h1>;
 };
 
