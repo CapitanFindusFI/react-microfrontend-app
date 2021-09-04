@@ -1,13 +1,15 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import {Configuration} from 'webpack';
 
-const webpackConfiguration = () => ({
+const webpackConfiguration = (): Configuration => ({
     entry: path.join(__dirname, 'src', 'index.tsx'),
     devtool: 'source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
     },
     output: {
-        path: path.join(__dirname, 'build'),
+        path: path.join(__dirname, 'dist'),
         filename: 'build.js',
     },
     module: {
@@ -18,12 +20,25 @@ const webpackConfiguration = () => ({
                 options: {
                     transpileOnly: true,
                 },
-                exclude: '/build/',
+                exclude: '/dist/',
             },
         ],
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'build', 'index.html'),
+        }),
+    ],
     devServer: {
-        port: 999,
+        client: {
+            logging: 'info',
+        },
+        static: {
+            directory: path.join(__dirname, 'build'),
+        },
+        historyApiFallback: true,
+        port: 9999,
+        compress: true,
     },
 });
 
