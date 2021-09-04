@@ -4,7 +4,7 @@ import {History, createBrowserHistory} from 'history';
 import App from './app';
 
 const mountApplication = (
-    containerId = 'react-app',
+    containerId = 'react-container',
     history: History = createBrowserHistory(),
 ): void => {
     ReactDOM.render(
@@ -19,12 +19,16 @@ const unmountApplication = (containerId: string): void => {
     ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
 };
 
-mountApplication();
+if (document.getElementById('react-container')) {
+    mountApplication();
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const _window = window as any;
-_window.microapps = _window.microapps || [];
-_window.microapps.push({
-    mount: mountApplication,
-    unmount: unmountApplication,
-});
+_window.microapps = _window.microapps || {};
+_window.microapps.list = _window.microapps.list || [];
+_window.microapps.start =
+    _window.microapps.start ||
+    function () {
+        console.log('start microapp');
+    };

@@ -36,8 +36,9 @@ const webpackConfiguration = (): Configuration => ({
         static: {
             directory: path.join(__dirname, 'build'),
         },
+        allowedHosts: 'all',
         historyApiFallback: true,
-        port: 9999,
+        port: 9998,
         compress: true,
     },
 });
