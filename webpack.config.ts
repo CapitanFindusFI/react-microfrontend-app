@@ -1,12 +1,15 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
-import {DefinePlugin} from 'webpack';
-import {Configuration} from 'webpack';
+import {DefinePlugin, Configuration} from 'webpack';
 
 const webpackConfiguration = (env: Record<string, string>): Configuration => ({
     entry: path.join(__dirname, 'src', 'index.tsx'),
     devtool: 'source-map',
     resolve: {
+        alias: {
+            '@constants': path.join(__dirname, 'src', 'constants'),
+            '@views': path.join(__dirname, 'src', 'views'),
+        },
         extensions: ['.ts', '.tsx', '.js'],
     },
     output: {

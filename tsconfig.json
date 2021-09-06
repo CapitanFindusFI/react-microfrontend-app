@@ -7,11 +7,17 @@
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "allowJs": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "downlevelIteration": true,
     "paths": {
+      "@constants/*": [
+        "src/constants/*"
+      ],
+      "@views/*": [
+        "src/views/*"
+      ],
       "*": [
         "src/*"
       ]

@@ -1,4 +1,4 @@
-import * as pathKey from './path-keys';
+import * as pathKey from '@constants/path-keys';
 
 const APP_URLS = {
     [pathKey.HOME_PATH_KEY]: '/',

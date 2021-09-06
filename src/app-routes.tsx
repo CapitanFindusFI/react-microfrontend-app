@@ -1,10 +1,10 @@
 import React from 'react';
 import {History} from 'history';
 import {Router, Route, Switch} from 'react-router-dom';
-import * as pathKeys from './constants/path-keys';
-import {getUrl} from './constants/urls';
-import HomeView from './views/home';
-import ListView from './views/list';
+import * as pathKeys from '@constants/path-keys';
+import {getUrl} from '@constants/urls';
+import HomeView from '@views/home';
+import ListView from '@views/list';
 
 type PropsType = {
     history: History;

@@ -1,8 +1,8 @@
 import React, {StrictMode} from 'react';
 import ReactDOM from 'react-dom';
 import {History, createBrowserHistory} from 'history';
-import App from './app';
 import {REACT_AUTOMOUNT} from './env';
+import App from './app';
 
 const mountApplication = (
     containerId = 'react-container',
