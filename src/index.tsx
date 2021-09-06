@@ -7,10 +7,11 @@ import App from './app';
 const mountApplication = (
     containerId = 'react-container',
     history: History = createBrowserHistory(),
+    basepath = '',
 ): void => {
     ReactDOM.render(
         <StrictMode>
-            <App history={history} />
+            <App history={history} basepath={basepath} />
         </StrictMode>,
         document.getElementById(containerId),
     );

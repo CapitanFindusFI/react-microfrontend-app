@@ -8,21 +8,22 @@ import ListView from '@views/list';
 
 type PropsType = {
     history: History;
+    basepath?: string;
 };
 
-const AppRoutes: React.FC<PropsType> = ({history}) => {
+const AppRoutes: React.FC<PropsType> = ({history, basepath}) => {
     return (
         <Router history={history}>
             <Switch>
                 <Route
                     component={ListView}
-                    path={getUrl(pathKeys.LIST_PATH_KEY)}
+                    path={`${basepath}${getUrl(pathKeys.LIST_PATH_KEY)}`}
                     key={pathKeys.LIST_PATH_KEY}
                 />
                 {/* ROOT VIEW */}
                 <Route
                     component={HomeView}
-                    path={getUrl(pathKeys.HOME_PATH_KEY)}
+                    path={`${basepath}${getUrl(pathKeys.HOME_PATH_KEY)}`}
                     key={pathKeys.HOME_PATH_KEY}
                 />
             </Switch>
