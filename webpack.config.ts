@@ -1,8 +1,9 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import {DefinePlugin} from 'webpack';
 import {Configuration} from 'webpack';
 
-const webpackConfiguration = (): Configuration => ({
+const webpackConfiguration = (env: Record<string, string>): Configuration => ({
     entry: path.join(__dirname, 'src', 'index.tsx'),
     devtool: 'source-map',
     resolve: {
@@ -25,6 +26,9 @@ const webpackConfiguration = (): Configuration => ({
         ],
     },
     plugins: [
+        new DefinePlugin({
+            'process.env.REACT_AUTOMOUNT': JSON.stringify(env.REACT_AUTOMOUNT),
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'build', 'index.html'),
         }),
