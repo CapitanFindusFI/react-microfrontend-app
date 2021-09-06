@@ -5,9 +5,9 @@ const APP_URLS = {
     [pathKey.LIST_PATH_KEY]: '/list',
 };
 
-export function getUrl(pathKey: string) {
+export function getUrl(pathKey: string, basepath = '') {
     if (!APP_URLS[pathKey]) {
         throw new Error(`Unable to find URL for path: ${pathKey}`);
     }
-    return APP_URLS[pathKey];
+    return `${basepath}${APP_URLS[pathKey]}`;
 }
