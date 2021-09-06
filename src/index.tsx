@@ -20,16 +20,16 @@ const unmountApplication = (containerId: string): void => {
     ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
 };
 
-console.log(process.env.REACT_AUTOMOUNT);
-
 if (REACT_AUTOMOUNT) {
+    console.debug('app has been launched in normal mode');
     mountApplication();
+} else {
+    console.debug('app has been launched in microfrontend mode');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const _window = window as any;
+    _window.microapps = _window.microapps || {};
+    _window.microapps.tmp = {
+        mount: mountApplication,
+        unmount: unmountApplication,
+    };
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const _window = window as any;
-_window.microapps = _window.microapps || {};
-_window.microapps.tmp = {
-    mount: mountApplication,
-    unmount: unmountApplication,
-};
